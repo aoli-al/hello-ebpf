@@ -130,9 +130,10 @@ public class TraceLog {
             String line = null;
             if (format != null) {
                 var fields = readFields();
-                if (fields != null) {
-                    line = format.apply(fields);
-                }
+                line = fields.toString();
+//                if (fields != null) {
+//                    line = format.apply(fields);
+//                }
             } else {
                 line = traceFile.readLine();
             }
