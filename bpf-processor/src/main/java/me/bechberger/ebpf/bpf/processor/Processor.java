@@ -520,6 +520,9 @@ public class Processor extends AbstractProcessor {
 
     /** Find the library include path */
     private static Path findIncludePath() {
+        if (System.getenv("EBPF_INCLUDE_PATH") != null) {
+            return Path.of(System.getenv("EBPF_INCLUDE_PATH"));
+        }
         if (includePath == null) {
             // like /usr/include/aarch64-linux-gnu
             includePath = Path.of("/usr/include").resolve(System.getProperty("os.arch") + "-linux-gnu");
